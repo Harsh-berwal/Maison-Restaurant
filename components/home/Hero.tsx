@@ -55,7 +55,7 @@ export default function Hero() {
         <section className="relative min-h-screen w-full overflow-hidden">
             {/* Background */}
             <Image
-                src="/images/hero/hero-bg.png"
+                src="/images/home/hero-bg.png"
                 alt="Restaurant Interior"
                 fill
                 priority

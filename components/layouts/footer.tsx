@@ -146,7 +146,7 @@ const handleSubscribe = async () => {
     return (
         <footer
             ref={footerRef}
-            className="bg-[#1d0904] mt-15 border-t border-[#47251b] text-[#d9b39b]"
+            className="bg-[#1d0904] top-15 border-t border-[#47251b] text-[#d9b39b]"
         >
             <div className="max-w-7xl mx-auto px-8 py-20">
 
