@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MapPin } from "lucide-react";
@@ -10,10 +10,52 @@ import {
     Mail,
     Clock,
 } from "lucide-react";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
+    const [email, setEmail] = useState("");
+const [loading, setLoading] = useState(false);
+
+const subscribe = useMutation(api.newsletter.subscribe);
+
+const handleSubscribe = async () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email.trim()) {
+    toast.error("Please enter your email.");
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    toast.error("Please enter a valid email.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    await subscribe({
+      email: email.trim().toLowerCase(),
+    });
+    toast.success("Successfully subscribed!");
+
+    setEmail("");
+  } catch (error) {
+    if (error instanceof Error) {
+      toast.error(error.message);
+    } else {
+      toast.error("Something went wrong.");
+    }
+  } finally {
+    setLoading(false);
+  }
+};
+
+
     const footerRef = useRef<HTMLElement>(null);
     const columns = useRef<HTMLDivElement[]>([]);
     const socials = useRef<HTMLAnchorElement[]>([]);
@@ -231,35 +273,46 @@ export default function Footer() {
 
                     {/* Newsletter */}
 
-                    <div ref={(el) => {
-                        if (el) {
-                            columns.current[3] = el;
-                        }
-                    }}>
+                    <div
+                        ref={(el) => {
+                            if (el) columns.current[3] = el;
+                        }}
+                    >
                         <h4 className="uppercase tracking-[0.25em] text-sm text-[#8e6858] mb-8">
                             Newsletter
                         </h4>
 
                         <p className="leading-8 text-[#b99482] mb-8">
                             Seasonal menus, exclusive offers, and private events —
-                            delivered to your inbox.
+                            delivered straight to your inbox.
                         </p>
 
                         <input
                             type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                    handleSubscribe();
+                                }
+                            }}
                             placeholder="your@email.com"
-                            className="w-full h-14 rounded-full border border-[#4e3026] bg-transparent px-6 outline-none transition-all duration-300 focus:border-[#d37b44] focus:shadow-[0_0_20px_rgba(211,123,68,0.3)]"
+                            className="w-full h-14 rounded-full border border-[#4e3026] bg-transparent px-6 text-white placeholder:text-[#8e6858] outline-none transition-all duration-300 focus:border-[#d37b44] focus:shadow-[0_0_20px_rgba(211,123,68,0.3)]"
                         />
 
                         <button
                             ref={subscribeBtn}
-                            className="subscribe-btn relative mt-5 w-full h-14 overflow-hidden rounded-full bg-[#d37b44] text-white font-semibold"
+                            onClick={handleSubscribe}
+                            disabled={loading}
+                            className="subscribe-btn relative mt-5 w-full h-14 overflow-hidden rounded-full bg-[#d37b44] text-white font-semibold disabled:cursor-not-allowed disabled:opacity-70"
                         >
-                            <span className="relative z-10">Subscribe</span>
+                            <span className="relative z-10">
+                                {loading ? "Subscribing..." : "Subscribe"}
+                            </span>
 
                             <span
                                 ref={shine}
-                                className="absolute left-[-150%] top-0 h-full w-1/2 bg-white/20 blur-md rotate-12"
+                                className="absolute left-[-150%] top-0 h-full w-1/2 rotate-12 bg-white/20 blur-md"
                             />
                         </button>
                     </div>
