@@ -4,7 +4,7 @@ import Navbar from "@/components/layouts/navbar";
 // import FeaturedMenu from "@/components/home/FeaturedMenu";
 // import Testimonials from "@/components/home/Testimonials";
 // import CTA from "@/components/home/CTA";
-// import Footer from "@/components/layouts/footer";
+import Footer from "@/components/layouts/footer";
 
 
 export default function Home() {
@@ -16,7 +16,8 @@ export default function Home() {
       <FeaturedMenu />
       <Testimonials />
       <CTA />
-      <Footer /> */}
+      */}
+      <Footer /> 
     </>
   );
 }
