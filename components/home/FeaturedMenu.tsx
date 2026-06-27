@@ -316,17 +316,17 @@ export default function FeaturedDishes() {
               key={index}
               ref={dish.ref}
               className="
-        group
-        overflow-hidden
-        rounded-[24px]
-        bg-white
-        shadow-lg
-        transition-all
-        duration-500
-        hover:-translate-y-2
-        hover:shadow-2xl
-      "
-            >
+                group/card
+                overflow-hidden
+                rounded-[24px]
+                bg-white
+                shadow-lg
+                transition-all
+                duration-500
+                hover:-translate-y-2
+                hover:shadow-2xl
+              "
+                    >
               {/* Image */}
               <div className="overflow-hidden">
                 <Image
@@ -335,115 +335,146 @@ export default function FeaturedDishes() {
                   width={500}
                   height={600}
                   className="
-            h-64
-            w-full
-            object-cover
-            transition-transform
-            duration-700
-            group-hover:scale-110
+                    h-64
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover/card:scale-110
 
-            sm:h-72
-            md:h-80
-            lg:h-[340px]
-          "
-                />
+                    sm:h-72
+                    md:h-80
+                    lg:h-[340px]
+                  "
+                        />
               </div>
 
               {/* Content */}
               <div className="p-5 sm:p-6 lg:p-7">
                 <span
                   className="
-            inline-block
-            rounded-full
-            bg-[#FDF0E7]
-            px-3
-            py-2
-            text-[10px]
-            font-semibold
-            uppercase
-            tracking-[2px]
-            text-[#D8844B]
+                      inline-block
+                      rounded-full
+                      bg-[#FDF0E7]
+                      px-3
+                      py-2
+                      text-[10px]
+                      font-semibold
+                      uppercase
+                      tracking-[2px]
+                      text-[#D8844B]
 
-            sm:px-4
-            sm:text-xs
-          "
-                >
+                      sm:px-4
+                      sm:text-xs
+                    "
+                          >
                   {dish.badge}
                 </span>
 
                 <h3
                   className="
-            mt-5
-            font-serif
-            text-2xl
-            leading-tight
-            text-[#241814]
+                      mt-5
+                      font-serif
+                      text-2xl
+                      leading-tight
+                      text-[#241814]
 
-            sm:text-3xl
-          "
-                >
+                      sm:text-3xl
+                    "
+                          >
                   {dish.title}
                 </h3>
 
                 <p
                   className="
-            mt-4
-            text-sm
-            leading-7
-            text-gray-600
+                      mt-4
+                      text-sm
+                      leading-7
+                      text-gray-600
 
-            sm:text-base
-          "
-                >
+                      sm:text-base
+                    "
+                          >
                   {dish.description}
                 </p>
 
                 <div
                   className="
-            mt-8
-            flex
-            flex-col
-            gap-4
+                      mt-8
+                      flex
+                      flex-col
+                      gap-4
 
-            sm:flex-row
-            sm:items-center
-            sm:justify-between
-          "
-                >
+                      sm:flex-row
+                      sm:items-center
+                      sm:justify-between
+                    "
+                          >
                   <span
                     className="
-              text-2xl
-              font-bold
-              text-[#D8844B]
+                      text-2xl
+                      font-bold
+                      text-[#D8844B]
 
-              sm:text-3xl
-            "
-                  >
+                      sm:text-3xl
+                    "
+                          >
                     {dish.price}
                   </span>
-
+                  <Link href="/menu">
                   <button
                     ref={dish.btnRef}
                     className="
-              rounded-full
-              bg-[#241814]
-              px-6
-              py-3
-              text-sm
-              font-medium
-              text-white
+                      group/button
+                      relative
+                      overflow-hidden
+                      rounded-full
+                      bg-[#241814]
+                      border
+                      border-[#241814]
+                      px-6
+                      py-3
+                      text-sm
+                      transition-all
+                      duration-500
+                      hover:border-[#D8844B]
+                      hover:shadow-[0_15px_40px_rgba(216,132,75,0.25)]
+                      sm:px-7
+                      sm:py-3.5
+                      sm:text-base
+                    "
+                          >
+                    {/* Fill Animation */}
+                    <span
+                      className="
+                        absolute
+                        inset-0
+                        -translate-x-full
+                        bg-[#D8844B]
+                        transition-transform
+                        duration-500
+                        ease-out
+                        group-hover/button:translate-x-0
+                      "
+                            />
 
-              transition-all
-              duration-300
-
-              hover:bg-[#D8844B]
-              hover:shadow-lg
-
-              sm:text-base
-            "
-                  >
-                    Order Now
+                    {/* Button Text */}
+                    <span
+                      className="
+                        relative
+                        z-10
+                        font-medium
+                        tracking-wide
+                        text-white
+                        transition-colors
+                        duration-500
+                        group-hover/button:text-white
+                      "
+                            >
+                      View Dish
+                    </span>
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>
