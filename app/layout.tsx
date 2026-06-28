@@ -32,7 +32,7 @@ export default function RootLayout({
             richColors
             expand
             toastOptions={{
-              classNames: {
+              classNames: { 
                 toast:
                   "!rounded-3xl !bg-[#d37b44] !border !border-[#a65a2e] !text-white shadow-2xl px-5 py-4",
                 title: "font-semibold",

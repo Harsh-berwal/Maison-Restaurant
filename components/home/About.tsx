@@ -77,9 +77,9 @@ export default function About() {
         "<"
       );
 
-    // ============================
+    ===
     // Floating Cards (Much Smoother)
-    // ============================
+    ===
 
     gsap.to(topCardRef.current, {
       keyframes: [
@@ -103,9 +103,9 @@ export default function About() {
       ease: "sine.inOut",
     });
 
-    // ============================
+    ===
     // Image Hover
-    // ============================
+    ===
 
     const image = imageRef.current;
 

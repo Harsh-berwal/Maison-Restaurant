@@ -57,9 +57,9 @@ export default function FeaturedDishes() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // ==========================
+      =
       // Initial State
-      // ==========================
+      =
 
       gsap.set(headingRef.current, {
         opacity: 0,
@@ -77,9 +77,9 @@ export default function FeaturedDishes() {
         scale: 0.94,
       });
 
-      // ==========================
+      =
       // Main Timeline
-      // ==========================
+      =
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -120,9 +120,9 @@ export default function FeaturedDishes() {
           "-=0.4",
         );
 
-      // ==========================
+      =
       // Premium Card Hover
-      // ==========================
+      =
 
       const cards = [card1Ref.current, card2Ref.current, card3Ref.current];
 
@@ -173,9 +173,9 @@ export default function FeaturedDishes() {
         card.addEventListener("mouseleave", leave);
       });
 
-      // ==========================
+      =
       // Magnetic Buttons
-      // ==========================
+      =
 
       const buttons = [btn1Ref.current, btn2Ref.current, btn3Ref.current];
 
