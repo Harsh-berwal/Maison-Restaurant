@@ -35,9 +35,8 @@ export default function Specialties() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      =
+      
       // Heading Animation
-      =
 
       gsap.from(headingRef.current, {
         y: 60,
@@ -50,9 +49,9 @@ export default function Specialties() {
         },
       });
 
-      =
+      
       // Cards Stagger Animation
-      =
+      
 
       gsap.from(cardsRef.current, {
         y: 90,
@@ -66,9 +65,9 @@ export default function Specialties() {
         },
       });
 
-      =
+      
       // Image Parallax
-      =
+      
 
       imageRefs.current.forEach((img) => {
         if (!img) return;
@@ -93,9 +92,9 @@ export default function Specialties() {
         );
       });
 
-      =
+      
       // Card Hover Animation
-      =
+      
 
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
