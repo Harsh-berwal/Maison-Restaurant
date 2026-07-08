@@ -67,12 +67,6 @@ export default function ReservationCTA() {
           opacity: 0,
         })
 
-        .from(buttonWrapperRef.current, {
-          y: 20,
-          opacity: 0,
-          stagger: 0.15,
-        })
-
         .from(
           cardsRef.current,
           {

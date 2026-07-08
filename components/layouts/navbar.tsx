@@ -23,185 +23,175 @@ export default function Navbar() {
   const menuItems = useRef<(HTMLAnchorElement | null)[]>([]);
   const reserveMobile = useRef<HTMLButtonElement>(null);
 
-useLayoutEffect(() => {
-  const ctx = gsap.context(() => {
-    // Initial Drawer State
-    gsap.set(drawerRef.current, {
-      xPercent: -100,
-    });
-
-    gsap.set(overlayRef.current, {
-      opacity: 0,
-      pointerEvents: "none",
-    });
-
-    
-    // Logo Animation
-    
-
-    const logo = logoRef.current;
-
-    const logoEnter = () => {
-      gsap.to(logo, {
-        scale: 1.08,
-        y: -2,
-        rotation: 1,
-        duration: 0.45,
-        ease: "expo.out",
-      });
-    };
-
-    const logoLeave = () => {
-      gsap.to(logo, {
-        scale: 1,
-        y: 0,
-        rotation: 0,
-        duration: 0.45,
-        ease: "expo.out",
-      });
-    };
-
-    logo?.addEventListener("mouseenter", logoEnter);
-    logo?.addEventListener("mouseleave", logoLeave);
-
-    
-    // Premium Button Animation
-
-    const button = reserveBtn.current;
-    const shineLayer = shine.current;
-
-    const buttonEnter = () => {
-      if (!button || !shineLayer) return;
-
-      const width = button.offsetWidth;
-
-      gsap.killTweensOf([button, shineLayer]);
-
-      gsap.to(button, {
-        y: -4,
-        scale: 1.04,
-        duration: 0.45,
-        ease: "expo.out",
-        boxShadow: "0 20px 45px rgba(213,90,19,.35)",
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Initial Drawer State
+      gsap.set(drawerRef.current, {
+        xPercent: -100,
       });
 
-      gsap.fromTo(
-        shineLayer,
-        {
-          x: -120,
-          opacity: 0,
-        },
-        {
-          x: width + 120,
-          opacity: 1,
-          duration: 1,
-          ease: "power.inOut", 
-          onComplete: () => {
-            gsap.set(shineLayer, {
-              x: -120,
-              opacity: 0,
-            });
-          },
-        }
-      );
-    };
-
-    const buttonLeave = () => {
-      gsap.to(button, {
-        y: 0,
-        scale: 1,
-        duration: 0.45,
-        ease: "expo.out",
-        boxShadow: "0 0 0 rgba(0,0,0,0)",
+      gsap.set(overlayRef.current, {
+        opacity: 0,
+        pointerEvents: "none",
       });
-    };
 
-    button?.addEventListener("mouseenter", buttonEnter);
-    button?.addEventListener("mouseleave", buttonLeave);
+      // Logo Animation
+      const logo = logoRef.current;
 
-    
-    // Mobile Drawer
-    
+      const logoEnter = () => {
+        gsap.to(logo, {
+          scale: 1.08,
+          y: -2,
+          rotation: 1,
+          duration: 0.45,
+          ease: "expo.out",
+        });
+      };
 
-    if (menuOpen) {
-      const tl = gsap.timeline();
+      const logoLeave = () => {
+        gsap.to(logo, {
+          scale: 1,
+          y: 0,
+          rotation: 0,
+          duration: 0.45,
+          ease: "expo.out",
+        });
+      };
 
-      tl.to(
-        overlayRef.current,
-        {
-          opacity: 1,
-          pointerEvents: "auto",
-          duration: 0.25,
-        },
-        0
-      )
-        .to(
-          drawerRef.current,
+      logo?.addEventListener("mouseenter", logoEnter);
+      logo?.addEventListener("mouseleave", logoLeave);
+
+      //Button Animation
+
+      const button = reserveBtn.current;
+      const shineLayer = shine.current;
+
+      const buttonEnter = () => {
+        if (!button || !shineLayer) return;
+
+        const width = button.offsetWidth;
+
+        gsap.killTweensOf([button, shineLayer]);
+
+        gsap.to(button, {
+          y: -4,
+          scale: 1.04,
+          duration: 0.45,
+          ease: "expo.out",
+          boxShadow: "0 20px 45px rgba(213,90,19,.35)",
+        });
+
+        gsap.fromTo(
+          shineLayer,
           {
-            xPercent: 0,
-            duration: 0.7,
-            ease: "expo.out",
+            x: -120,
+            opacity: 0,
+          },
+          {
+            x: width + 120,
+            opacity: 1,
+            duration: 1,
+            ease: "power.inOut",
+            onComplete: () => {
+              gsap.set(shineLayer, {
+                x: -120,
+                opacity: 0,
+              });
+            },
+          }
+        );
+      };
+
+      const buttonLeave = () => {
+        gsap.to(button, {
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          ease: "expo.out",
+          boxShadow: "0 0 0 rgba(0,0,0,0)",
+        });
+      };
+
+      button?.addEventListener("mouseenter", buttonEnter);
+      button?.addEventListener("mouseleave", buttonLeave);
+
+      // Mobile Drawer
+      if (menuOpen) {
+        const tl = gsap.timeline();
+
+        tl.to(
+          overlayRef.current,
+          {
+            opacity: 1,
+            pointerEvents: "auto",
+            duration: 0.25,
           },
           0
         )
-        .fromTo(
-          menuItems.current.filter(Boolean),
-          {
-            opacity: 0,
-            x: -25,
-          },
-          {
-            opacity: 1,
-            x: 0,
-            stagger: 0.08,
-            duration: 0.45,
-            ease: "power3.out",
-          },
-          "-=0.35"
-        )
-        .fromTo(
-          reserveMobile.current,
-          {
-            opacity: 0,
-            y: 25,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: "power3.out",
-          },
-          "-=0.2"
-        );
-    } else {
-      gsap.to(drawerRef.current, {
-        xPercent: -100,
-        duration: 0.55,
-        ease: "expo.inOut",
-      });
+          .to(
+            drawerRef.current,
+            {
+              xPercent: 0,
+              duration: 0.7,
+              ease: "expo.out",
+            },
+            0
+          )
+          .fromTo(
+            menuItems.current.filter(Boolean),
+            {
+              opacity: 0,
+              x: -25,
+            },
+            {
+              opacity: 1,
+              x: 0,
+              stagger: 0.08,
+              duration: 0.45,
+              ease: "power3.out",
+            },
+            "-=0.35"
+          )
+          .fromTo(
+            reserveMobile.current,
+            {
+              opacity: 0,
+              y: 25,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.4,
+              ease: "power3.out",
+            },
+            "-=0.2"
+          );
+      } else {
+        gsap.to(drawerRef.current, {
+          xPercent: -100,
+          duration: 0.55,
+          ease: "expo.inOut",
+        });
 
-      gsap.to(overlayRef.current, {
-        opacity: 0,
-        pointerEvents: "none",
-        duration: 0.25,
-      });
-    }
+        gsap.to(overlayRef.current, {
+          opacity: 0,
+          pointerEvents: "none",
+          duration: 0.25,
+        });
+      }
 
-    
-    // Cleanup
-    
+      // Cleanup
+      return () => {
+        logo?.removeEventListener("mouseenter", logoEnter);
+        logo?.removeEventListener("mouseleave", logoLeave);
 
-    return () => {
-      logo?.removeEventListener("mouseenter", logoEnter);
-      logo?.removeEventListener("mouseleave", logoLeave);
+        button?.removeEventListener("mouseenter", buttonEnter);
+        button?.removeEventListener("mouseleave", buttonLeave);
+      };
+    }, navRef);
 
-      button?.removeEventListener("mouseenter", buttonEnter);
-      button?.removeEventListener("mouseleave", buttonLeave);
-    };
-  }, navRef);
-
-  return () => ctx.revert();
-}, [menuOpen]);
+    return () => ctx.revert();
+  }, [menuOpen]);
 
   return (
     <>
@@ -277,9 +267,9 @@ useLayoutEffect(() => {
 
       {/* Mobile Drawer */}
       <aside
-          ref={drawerRef}
-          className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] -translate-x-full flex-col bg-[#5B1F08] shadow-2xl"
-        >
+        ref={drawerRef}
+        className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] flex-col bg-[#5B1F08] shadow-2xl"
+      >
 
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">
@@ -289,11 +279,13 @@ useLayoutEffect(() => {
             alt="Maison"
             width={150}
             height={150}
+            priority
+            className="h-auto w-full object-contain pt-3"
           />
 
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-white"
+            className="text-white relative z-20 lg:hidden"
           >
             <X size={30} />
           </button>

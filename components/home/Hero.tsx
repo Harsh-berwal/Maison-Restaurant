@@ -58,7 +58,7 @@ export default function Hero() {
                 src="/images/home/hero-bg.png"
                 alt="Restaurant Interior"
                 fill
-                priority
+                sizes="100vw"
                 className="object-cover object-center"
             />
 
