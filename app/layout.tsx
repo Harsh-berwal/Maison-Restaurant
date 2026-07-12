@@ -1,6 +1,6 @@
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
-import ConvexClientProvider from "@/providers/ConvexClientProvider";
+import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
 import { Toaster } from "sonner";
 
 const inter = Inter({

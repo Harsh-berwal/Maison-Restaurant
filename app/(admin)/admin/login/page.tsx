@@ -3,16 +3,36 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import gsap from "gsap";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { authClient } from "@/lib/auth-client";
+import { loginSchema, LoginFormData } from "@/lib/validations/login";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const pageRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useLayoutEffect(() => {
@@ -77,6 +97,29 @@ export default function LoginPage() {
     });
   };
 
+  const onSubmit = async (data: LoginFormData) => {
+    setServerError(null);
+
+    try {
+      await authClient.signIn.email({
+        email: data.email,
+        password: data.password,
+      });
+
+      toast.success("Signed in successfully");
+      router.push("/admin/dashboard");
+      router.refresh();
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "Unable to sign in right now.";
+
+      setServerError(message);
+      toast.error("Login failed", {
+        description: message,
+      });
+    }
+  };
+
   return (
     <div ref={pageRef} className="relative min-h-screen overflow-hidden">
       {/* Background */}
@@ -113,8 +156,8 @@ export default function LoginPage() {
           </div>
 
           {/* Form */}
-          <div ref={formRef} className="space-y-5">
-            {/* Email */}
+          <form ref={formRef} className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+
             <div>
               <label className="mb-2 block text-sm font-medium text-[#5B1F08]">
                 Email
@@ -124,12 +167,16 @@ export default function LoginPage() {
                 <Mail size={18} className="text-gray-400" />
 
                 <input
+                  {...register("email")}
                   type="email"
                   autoComplete="email"
                   placeholder="admin@maison.com"
                   className="w-full px-3 py-4 outline-none bg-transparent text-[#5B1F08] placeholder:text-gray-400"
                 />
               </div>
+              {errors.email && (
+                <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -142,6 +189,7 @@ export default function LoginPage() {
                 <Lock size={18} className="text-gray-400" />
 
                 <input
+                  {...register("password")}
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   placeholder="••••••••"
@@ -159,16 +207,27 @@ export default function LoginPage() {
                   )}
                 </button>
               </div>
+              {errors.password && (
+                <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
+              )}
             </div>
+
+            {serverError && (
+              <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {serverError}
+              </p>
+            )}
 
             {/* Button */}
             <button
               ref={buttonRef}
               onMouseEnter={handleHover}
               onMouseLeave={handleLeave}
+              type="submit"
+              disabled={isSubmitting}
               className="w-full cursor-pointer rounded-xl bg-[#D55A13] py-4 font-semibold text-white transition-colors hover:bg-[#bf4f11]"
             >
-              Sign In
+              {isSubmitting ? "Signing In..." : "Sign In"}
             </button>
 
             {/* Back */}
@@ -178,7 +237,7 @@ export default function LoginPage() {
             >
               ← Back to Website
             </Link>
-          </div>
+          </form>
         </div>
       </div>
     </div>
