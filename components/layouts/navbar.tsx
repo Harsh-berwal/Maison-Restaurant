@@ -267,9 +267,9 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <aside
-        ref={drawerRef}
-        className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] flex-col bg-[#5B1F08] shadow-2xl"
-      >
+  ref={drawerRef}
+  className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] -translate-x-full flex-col bg-[#5B1F08] shadow-2xl"
+>
 
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">
