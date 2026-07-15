@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@convex-dev/better-auth": "^0.12.5",
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.4.0",
     "better-auth": "~1.6.15",
     "convex": "^1.42.1",
