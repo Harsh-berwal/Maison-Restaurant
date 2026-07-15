@@ -241,19 +241,21 @@ export default function Navbar() {
           </Link>
 
           {/* Reserve Button */}
-          <button
-            ref={reserveBtn}
-            className="relative cursor-pointer overflow-hidden rounded-xl bg-[#D55A13] px-4 py-2 text-sm font-semibold tracking-wide text-white md:px-6 md:py-3 md:text-base lg:px-8"
-          >
-            <span className="relative z-20">
-              Reserve
-            </span>
+          <Link href="/reservations">
+            <button
+              ref={reserveBtn}
+              className="relative cursor-pointer overflow-hidden rounded-xl bg-[#D55A13] px-4 py-2 text-sm font-semibold tracking-wide text-white md:px-6 md:py-3 md:text-base lg:px-8"
+            >
+              <span className="relative z-20">
+                Reserve
+              </span>
 
-            <span
-              ref={shine}
-              className="pointer-events-none absolute top-0 -left-24 h-full w-12 rotate-[25deg] bg-white/40 blur-md"
-            />
-          </button>
+              <span
+                ref={shine}
+                className="pointer-events-none absolute top-0 -left-24 h-full w-12 rotate-[25deg] bg-white/40 blur-md"
+              />
+            </button>
+          </Link>
 
         </nav>
       </header>
@@ -267,9 +269,9 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       <aside
-  ref={drawerRef}
-  className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] -translate-x-full flex-col bg-[#5B1F08] shadow-2xl"
->
+        ref={drawerRef}
+        className="fixed left-0 top-0 z-[100] flex h-screen w-[320px] -translate-x-full flex-col bg-[#5B1F08] shadow-2xl"
+      >
 
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-white/10 px-6 py-6">

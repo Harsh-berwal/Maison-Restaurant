@@ -2,6 +2,7 @@ import Navbar from "@/components/layouts/navbar";
 import Footer from "@/components/layouts/footer";
 import CTA from "@/components/home/CTA";
 import MenuHero from "@/components/menu/Hero";
+import MenuSection from "@/components/menu/MenuSection";
 
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
     <>
       <Navbar />
       <MenuHero />
-      
+      <MenuSection />
       <CTA />
       <Footer /> 
     </>
