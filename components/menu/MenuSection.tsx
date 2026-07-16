@@ -127,6 +127,7 @@ export default function MenuSection() {
     <section
       ref={sectionRef}
       className="bg-[#F8F3ED] py-24"
+      id="menu-section"
     >
       <div className="mx-auto max-w-7xl px-6">
 
@@ -135,6 +136,7 @@ export default function MenuSection() {
         <div
           ref={headingRef}
           className="mb-20 text-center"
+          
         >
           <div className="mb-4 flex items-center justify-center gap-5">
 
@@ -220,7 +222,7 @@ export default function MenuSection() {
             >
 
               <p className="mb-4 text-sm font-medium uppercase tracking-[4px] text-[#D68652]">
-                CHEFS SPECIAL
+                Chef&apos;s Special
               </p>
 
               <h3 className="font-serif text-4xl font-semibold text-[#5B1F08]">

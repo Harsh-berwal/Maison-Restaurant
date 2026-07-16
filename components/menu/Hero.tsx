@@ -52,7 +52,7 @@ export default function MenuHero() {
   }, []);
 
   return (
-    <section className="relative h-[700px] w-full overflow-hidden">
+    <section className="relative h-[735px] w-full overflow-hidden">
       {/* Background */}
       <Image
         src="/images/menu/menu-banner.png"
