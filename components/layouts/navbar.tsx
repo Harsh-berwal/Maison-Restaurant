@@ -214,6 +214,10 @@ export default function Navbar() {
             <Link href="/gallery" className="transition-colors duration-300 hover:text-[#F6B26B]">
               Gallery
             </Link>
+            
+            <Link href="/contact" className="transition-colors duration-300 hover:text-[#F6B26B]">
+              Contact Us
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
