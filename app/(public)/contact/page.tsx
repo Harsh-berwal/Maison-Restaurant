@@ -1,7 +1,14 @@
-export default function Contact() {
+import Navbar from "@/components/layouts/navbar";
+import Footer from "@/components/layouts/footer";
+import CTA from "@/components/home/CTA";
+
+export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Contact Page</h1>
-    </div>
+    <>
+      <Navbar />
+      
+      <CTA />
+      <Footer /> 
+    </>
   );
 }

@@ -92,7 +92,7 @@ export default function GalleryHero() {
 
         {/* Paragraph */}
         <p className="mt-6 max-w-xs text-sm leading-7 text-gray-200 sm:mt-8 sm:max-w-lg sm:text-base md:max-w-2xl md:text-lg md:leading-8">
-          Step inside Maison and explore moments of refined dining, elegant interiors, and culinary artistry. Every photograph reflects the warmth, craftsmanship, and unforgettable experiences we create every day.
+          From beautifully plated dishes to thoughtfully designed spaces, discover the essence of Maison through moments captured with elegance.
         </p>
       </div>
     </section>
