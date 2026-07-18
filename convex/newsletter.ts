@@ -6,20 +6,25 @@ export const subscribe = mutation({
     email: v.string(),
   },
 
-  handler: async (ctx, args) => {
+  handler: async (ctx, { email }) => {
+    const normalizedEmail = email.trim().toLowerCase();
+
     const existing = await ctx.db
       .query("newsletter")
       .withIndex("by_email", (q) =>
-        q.eq("email", args.email.toLowerCase())
+        q.eq("email", normalizedEmail)
       )
-      .first();
+      .unique();
 
     if (existing) {
-      throw new Error("Email already subscribed.");
+      return {
+        success: false,
+        message: "You are already subscribed!",
+      };
     }
 
     await ctx.db.insert("newsletter", {
-      email: args.email.toLowerCase(),
+      email: normalizedEmail,
       subscribedAt: Date.now(),
     });
 

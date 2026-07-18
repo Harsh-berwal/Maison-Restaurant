@@ -38,18 +38,22 @@ const handleSubscribe = async () => {
   setLoading(true);
 
   try {
-    await subscribe({
+    const result = await subscribe({
       email: email.trim().toLowerCase(),
     });
-    toast.success("Successfully subscribed!");
 
-    setEmail("");
-  } catch (error) {
-    if (error instanceof Error) {
-      toast.error(error.message);
+    if (result.success) {
+      toast.success(result.message);
+      setEmail("");
     } else {
-      toast.error("Something went wrong.");
+      toast.info(result.message);
     }
+  } catch (error) {
+    console.error(error);
+
+    toast.error("Something went wrong.", {
+      description: "Please try again later.",
+    });
   } finally {
     setLoading(false);
   }
