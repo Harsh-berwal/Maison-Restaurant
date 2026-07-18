@@ -80,7 +80,7 @@ export default function FeaturedDishes() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 72%",
+          start: "top 80%",
           once: true,
         },
       });
@@ -97,7 +97,7 @@ export default function FeaturedDishes() {
           {
             opacity: 1,
             x: 0,
-            duration: 0.8,
+            duration: 0.2,
             ease: "power3.out",
           },
           "-=0.7",
@@ -109,7 +109,7 @@ export default function FeaturedDishes() {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1,
+            duration: 0.1,
             ease: "power3.out",
             stagger: 0.18,
           },
