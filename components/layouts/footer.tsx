@@ -59,7 +59,6 @@ const handleSubscribe = async () => {
   }
 };
 
-
     const footerRef = useRef<HTMLElement>(null);
     const columns = useRef<HTMLDivElement[]>([]);
     const socials = useRef<HTMLAnchorElement[]>([]);

@@ -32,7 +32,7 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-/* -------------------------------------------------------------------------- */
+//Function Component
 
 export default function ContactSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -342,29 +342,29 @@ export default function ContactSection() {
 
                   <div
                     className="
-            flex items-center justify-between
-            rounded-xl
-            border-2 border-[#D7C5B5]
-            bg-white/60
-            px-5 py-4
-            text-[#5B1F08]
-            transition-all duration-300
+                        flex items-center justify-between
+                        rounded-xl
+                        border-2 border-[#D7C5B5]
+                        bg-white/60
+                        px-5 py-4
+                        text-[#5B1F08]
+                        transition-all duration-300
 
-            hover:-translate-y-1
-            hover:border-[#D8844B]
-            hover:bg-[#FDF8F4]
-            hover:shadow-md
+                        hover:-translate-y-1
+                        hover:border-[#D8844B]
+                        hover:bg-[#FDF8F4]
+                        hover:shadow-md
 
-            peer-checked:border-[#5B1F08]
-            peer-checked:bg-[#5B1F08]
-            peer-checked:text-white
-            peer-checked:shadow-lg
+                        peer-checked:border-[#5B1F08]
+                        peer-checked:bg-[#5B1F08]
+                        peer-checked:text-white
+                        peer-checked:shadow-lg
 
-            peer-checked:hover:bg-[#5B1F08]
-            peer-checked:hover:border-[#5B1F08]
-            peer-checked:hover:text-white
-            peer-checked:hover:shadow-xl
-          "
+                        peer-checked:hover:bg-[#5B1F08]
+                        peer-checked:hover:border-[#5B1F08]
+                        peer-checked:hover:text-white
+                        peer-checked:hover:shadow-xl
+                    "
                   >
                     <span className="text-sm font-medium">{item}</span>
 
@@ -417,29 +417,41 @@ export default function ContactSection() {
           {/* Terms */}
 
           <div className="form-item">
-            <label className="group flex cursor-pointer items-start gap-4">
+            <label className="group flex cursor-pointer items-start gap-4 has-[:checked]:text-[#5B1F08]">
               <input
                 type="checkbox"
                 {...register("acceptedTerms")}
                 className="peer sr-only"
               />
 
-              {/* Custom Checkbox */}
               <div
-                className="mt-1 flex h-6 w-6 items-center justify-center rounded-md border-2 border-[#D7C5B5] bg-white transition-all duration-300
-                peer-checked:border-[#5B1F08]
-                peer-checked:bg-[#5B1F08]
-                group-hover:border-[#D8844B]"
-              >
-                <svg
-                  className="h-3.5 w-3.5 scale-0 text-white transition-transform duration-200 peer-checked:scale-100"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                className="
+                mt-1 flex h-6 w-6 items-center justify-center
+                rounded-md border-2 border-[#D7C5B5]
+                bg-white
+                transition-all duration-300
+                group-has-[:checked]:border-[#5B1F08]
+                group-has-[:checked]:bg-[#5B1F08]
+                group-hover:border-[#D8844B]
+                "
                 >
+                <svg
+                  className="
+                    h-3.5 w-3.5
+                    text-white
+                    opacity-0
+                    scale-50
+                    transition-all duration-200
+                    group-has-[:checked]:opacity-100
+                    group-has-[:checked]:scale-100
+                    "
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
@@ -469,7 +481,6 @@ export default function ContactSection() {
               </p>
             )}
           </div>
-
           {/* Submit */}
 
           <div className="form-item pt-6">
