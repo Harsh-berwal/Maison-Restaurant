@@ -1,7 +1,14 @@
-export default function Reservations() {
+import Navbar from "@/components/layouts/navbar";
+import Footer from "@/components/layouts/footer";
+import ReservationHero from "@/components/reservations/HeroSection";
+
+
+export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Reservations Page</h1>
-    </div>
+    <>
+      <Navbar />
+      <ReservationHero />
+      <Footer /> 
+    </>
   );
 }

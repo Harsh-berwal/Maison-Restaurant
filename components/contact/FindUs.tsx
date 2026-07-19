@@ -128,7 +128,7 @@ useEffect(() => {
         <h2 className="contact-heading text-5xl md:text-6xl font-serif text-[#5B1F08]">
           Find Us
         </h2>
-
+                                      
         <p className="contact-heading mt-6 max-w-xl text-lg leading-8 text-[#5B1F08]/70">
           Our concierge is available every day to assist with reservations,
           private dining experiences, and special occasions.
