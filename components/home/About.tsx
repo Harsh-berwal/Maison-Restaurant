@@ -140,7 +140,7 @@ export default function About() {
   >
     <div className="mx-auto flex w-[92%] max-w-7xl flex-col gap-16 lg:flex-row lg:items-center lg:justify-between">
 
-      {/* ================= LEFT ================= */}
+      {/*  LEFT  */}
       <div
         ref={leftRef}
         className="w-full text-center lg:w-[46%] lg:text-left"
@@ -202,7 +202,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* ================= RIGHT ================= */}
+      {/*  RIGHT  */}
       <div
         ref={rightRef}
         className="relative mx-auto w-full max-w-[620px] lg:mx-0 lg:w-[48%]"
