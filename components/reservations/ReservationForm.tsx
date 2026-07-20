@@ -10,9 +10,12 @@ import { User } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Clock3, UtensilsCrossed, MailCheck } from "lucide-react";
+import { Clock3, MailCheck } from "lucide-react";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 import FloorPlan from "./FloorPlan/FloorPlan";
+import { watch, watch } from "fs/promises";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -34,7 +37,11 @@ export default function ReservationForm() {
   const [selectedTable, setSelectedTable] = useState<number | null>(null);
 
   // Later this will come from Convex
-  const [bookedTables] = useState<number[]>([2, 5]);
+ const bookedTables =
+  useQuery(api.reservations.getBookedTables, {
+    date: watch("date"),
+    time: watch("time"),
+  }) ?? [];
 
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -96,6 +103,7 @@ export default function ReservationForm() {
         trigger: sectionRef.current,
         start: "top 75%",
       },
+
     });
   }, []);
 
