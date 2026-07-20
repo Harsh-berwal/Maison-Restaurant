@@ -15,7 +15,7 @@ export const getBookedTables = query({
 
     const bookedTables = reservations
       .filter((reservation) => reservation.time === args.time)
-      .map((reservation) => reservation.tableId);
+      .map((reservation) => reservation.tableNumber);
 
     return bookedTables;
   },
@@ -36,7 +36,7 @@ export const createReservation = mutation({
     occasion: v.optional(v.string()),
     notes: v.optional(v.string()),
 
-    tableId: v.id("tables"),
+    tableNumber: v.number(),
   },
 
   handler: async (ctx, args) => {
@@ -48,7 +48,7 @@ export const createReservation = mutation({
 
     const alreadyBooked = reservations.some(
       (reservation) =>
-        reservation.tableId === args.tableId &&
+        reservation.tableNumber === args.tableNumber &&
         reservation.time === args.time
     );
 

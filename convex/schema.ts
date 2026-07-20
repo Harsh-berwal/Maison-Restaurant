@@ -52,11 +52,11 @@ export default defineSchema({
     occasion: v.optional(v.string()),
     notes: v.optional(v.string()),
 
-    tableId: v.id("tables"),
+    tableNumber: v.number(),
 
     createdAt: v.number(),
   })
     .index("by_date", ["date"])
-    .index("by_table", ["tableId"])
+    .index("by_tableNumber", ["tableNumber"])
     .index("by_email", ["email"]),
 });

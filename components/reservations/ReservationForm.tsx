@@ -1,21 +1,28 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Calendar, Clock, Users, Utensils } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  Users,
+  Utensils,
+  User,
+  Clock3,
+  MailCheck,
+} from "lucide-react";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { User } from "lucide-react";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Clock3, MailCheck } from "lucide-react";
+
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 import FloorPlan from "./FloorPlan/FloorPlan";
-import { watch, watch } from "fs/promises";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -36,22 +43,15 @@ type ReservationValues = z.infer<typeof reservationSchema>;
 export default function ReservationForm() {
   const [selectedTable, setSelectedTable] = useState<number | null>(null);
 
-  // Later this will come from Convex
- const bookedTables =
-  useQuery(api.reservations.getBookedTables, {
-    date: watch("date"),
-    time: watch("time"),
-  }) ?? [];
-
   const sectionRef = useRef<HTMLElement>(null);
-
   const formRef = useRef<HTMLDivElement>(null);
-
   const planRef = useRef<HTMLDivElement>(null);
 
   const {
     register,
     handleSubmit,
+    watch,
+    reset,
     formState: { errors },
   } = useForm<ReservationValues>({
     resolver: zodResolver(reservationSchema),
@@ -68,16 +68,62 @@ export default function ReservationForm() {
     },
   });
 
-  const onSubmit = (data: ReservationValues) => {
+  // Current selected date & time
+  const selectedDate = watch("date");
+  const selectedTime = watch("time");
+
+  // Fetch booked tables
+  const bookedTables =
+    useQuery(
+      api.reservations.getBookedTables,
+      selectedDate && selectedTime
+        ? {
+            date: selectedDate,
+            time: selectedTime,
+          }
+        : "skip"
+    ) ?? [];
+
+  // Reservation mutation
+  const createReservation = useMutation(
+    api.reservations.createReservation
+  );
+
+  const onSubmit = async (data: ReservationValues) => {
     if (!selectedTable) {
       alert("Please select a table.");
       return;
     }
 
-    console.log({
-      ...data,
-      tableId: selectedTable,
-    });
+    try {
+      await createReservation({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+
+        date: data.date,
+        time: data.time,
+
+        guests: Number(data.guests),
+
+        occasion: data.occasion || undefined,
+        notes: data.notes || undefined,
+
+        tableNumber: selectedTable,
+      });
+
+      alert("Reservation Confirmed!");
+
+      reset();
+      setSelectedTable(null);
+    } catch (err) {
+      alert(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong."
+      );
+    }
   };
 
   useGSAP(() => {
@@ -103,7 +149,6 @@ export default function ReservationForm() {
         trigger: sectionRef.current,
         start: "top 75%",
       },
-
     });
   }, []);
 
