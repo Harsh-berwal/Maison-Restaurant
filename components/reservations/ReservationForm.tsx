@@ -10,18 +10,14 @@ import {
   Clock3,
   MailCheck,
 } from "lucide-react";
-
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-
 import FloorPlan from "./FloorPlan/FloorPlan";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -78,9 +74,9 @@ export default function ReservationForm() {
       api.reservations.getBookedTables,
       selectedDate && selectedTime
         ? {
-            date: selectedDate,
-            time: selectedTime,
-          }
+          date: selectedDate,
+          time: selectedTime,
+        }
         : "skip"
     ) ?? [];
 
@@ -202,23 +198,23 @@ export default function ReservationForm() {
                       placeholder="John"
                       {...register("firstName")}
                       className="
-          w-full
-          rounded-xl
-          border
-          border-[#D7C5B5]
-          bg-[#FCFAF7]
-          py-3.5
-          pl-12
-          pr-4
-          text-[#5B1F08]
-          placeholder:text-gray-400
-          outline-none
-          transition-all
-          duration-300
-          focus:border-[#D8844B]
-          focus:ring-4
-          focus:ring-[#D8844B]/10
-        "
+                      w-full
+                      rounded-xl
+                      border
+                      border-[#D7C5B5]
+                      bg-[#FCFAF7]
+                      py-3.5
+                      pl-12
+                      pr-4
+                      text-[#5B1F08]
+                      placeholder:text-gray-400
+                      outline-none
+                      transition-all
+                      duration-300
+                      focus:border-[#D8844B]
+                      focus:ring-4
+                      focus:ring-[#D8844B]/10
+                    "
                     />
                   </div>
 
@@ -241,23 +237,23 @@ export default function ReservationForm() {
                       placeholder="Doe"
                       {...register("lastName")}
                       className="
-          w-full
-          rounded-xl
-          border
-          border-[#D7C5B5]
-          bg-[#FCFAF7]
-          py-3.5
-          pl-12
-          pr-4
-          text-[#5B1F08]
-          placeholder:text-gray-400
-          outline-none
-          transition-all
-          duration-300
-          focus:border-[#D8844B]
-          focus:ring-4
-          focus:ring-[#D8844B]/10
-        "
+                        w-full
+                        rounded-xl
+                        border
+                        border-[#D7C5B5]
+                        bg-[#FCFAF7]
+                        py-3.5
+                        pl-12
+                        pr-4
+                        text-[#5B1F08]
+                        placeholder:text-gray-400
+                        outline-none
+                        transition-all
+                        duration-300
+                        focus:border-[#D8844B]
+                        focus:ring-4
+                        focus:ring-[#D8844B]/10
+                      "
                     />
                   </div>
 
@@ -323,22 +319,22 @@ export default function ReservationForm() {
                       type="date"
                       {...register("date")}
                       className="
-          w-full
-          rounded-xl
-          border
-          border-[#D7C5B5]
-          bg-[#FCFAF7]
-          py-3.5
-          pl-12
-          pr-4
-          text-[#5B1F08]
-          outline-none
-          transition-all
-          duration-300
-          focus:border-[#D8844B]
-          focus:ring-4
-          focus:ring-[#D8844B]/10
-        "
+                  w-full
+                  rounded-xl
+                  border
+                  border-[#D7C5B5]
+                  bg-[#FCFAF7]
+                  py-3.5
+                  pl-12
+                  pr-4
+                  text-[#5B1F08]
+                  outline-none
+                  transition-all
+                  duration-300
+                  focus:border-[#D8844B]
+                  focus:ring-4
+                  focus:ring-[#D8844B]/10
+                "
                     />
                   </div>
 
@@ -365,22 +361,22 @@ export default function ReservationForm() {
                       type="time"
                       {...register("time")}
                       className="
-          w-full
-          rounded-xl
-          border
-          border-[#D7C5B5]
-          bg-[#FCFAF7]
-          py-3.5
-          pl-12
-          pr-4
-          text-[#5B1F08]
-          outline-none
-          transition-all
-          duration-300
-          focus:border-[#D8844B]
-          focus:ring-4
-          focus:ring-[#D8844B]/10
-        "
+                        w-full
+                        rounded-xl
+                        border
+                        border-[#D7C5B5]
+                        bg-[#FCFAF7]
+                        py-3.5
+                        pl-12
+                        pr-4
+                        text-[#5B1F08]
+                        outline-none
+                        transition-all
+                        duration-300
+                        focus:border-[#D8844B]
+                        focus:ring-4
+                        focus:ring-[#D8844B]/10
+                      "
                     />
                   </div>
 
@@ -545,7 +541,7 @@ export default function ReservationForm() {
                     focus:ring-4
                     focus:ring-[#D8844B]/10
                     "
-                    />
+                />
 
                 <p className="mt-2 text-xs text-gray-500">
                   Let us know if you have any dietary restrictions or special
@@ -630,7 +626,7 @@ export default function ReservationForm() {
                     hover:shadow-[0_12px_30px_rgba(91,31,8,0.25)]
                     active:translate-y-0
                 "
-                >
+              >
                 {/* Shine Effect */}
                 <span
                   className="
@@ -670,35 +666,141 @@ export default function ReservationForm() {
           </div>
 
           {/* Right Side */}
-          <div ref={planRef}>
-            <FloorPlan
-              selectedTable={selectedTable}
-              bookedTables={bookedTables}
-              onSelectTable={setSelectedTable}
-            />
+          <div
+            ref={planRef}
+            className="w-full overflow-hidden"
+          >
+            {/* Floor Plan for Mobile */}
+            <div className="mb-6 rounded-3xl border border-[#E8D9CC] bg-white p-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] xl:hidden">
+
+              <div className="mb-5">
+                <span className="text-xs font-medium uppercase tracking-[0.3em] text-[#D8844B]">
+                  Table Selection
+                </span>
+
+                <h3 className="mt-2 font-heading text-2xl text-[#5B1F08]">
+                  Choose Your Table
+                </h3>
+
+                <p className="mt-2 text-sm leading-6 text-gray-600">
+                  Select an available table for your reservation.
+                  Booked tables are disabled.
+                </p>
+              </div>
+
+              <div className="relative">
+
+                <select
+                  value={selectedTable ?? ""}
+                  onChange={(e) =>
+                    setSelectedTable(
+                      e.target.value ? Number(e.target.value) : null
+                    )
+                  }
+                  className="
+                    w-full
+                    appearance-none
+                    rounded-xl
+                    border
+                    border-[#D7C5B5]
+                    bg-[#FCFAF7]
+                    px-4
+                    py-3.5
+                    pr-12
+                    text-[#5B1F08]
+                    outline-none
+                    transition-all
+                    duration-300
+                    focus:border-[#D8844B]
+                    focus:ring-4
+                    focus:ring-[#D8844B]/10
+                  "
+                >
+                  <option value="">Select a Table</option>
+
+                  {Array.from({ length: 10 }).map((_, index) => {
+                    const table = index + 1;
+
+                    return (
+                      <option
+                        key={table}
+                        value={table}
+                        disabled={bookedTables.includes(table)}
+                      >
+                        {bookedTables.includes(table)
+                          ? `Table ${table} • Booked`
+                          : `Table ${table}`}
+                      </option>
+                    );
+                  })}
+                </select>
+
+                {/* Dropdown Arrow */}
+                <svg
+                  className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#D8844B]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m6 9 6 6 6-6"
+                  />
+                </svg>
+
+              </div>
+
+              {selectedTable && (
+                <div className="mt-5 rounded-2xl border border-[#E8D9CC] bg-[#FCFAF7] p-4">
+                  <p className="text-sm text-gray-500">
+                    Selected Table
+                  </p>
+
+                  <p className="mt-1 text-xl font-semibold text-[#5B1F08]">
+                    Table {selectedTable}
+                  </p>
+                </div>
+              )}
+
+            </div>
+
+            {/* Floor Plan */}
+            <div className="hidden lg:block">
+              <FloorPlan
+                selectedTable={selectedTable}
+                bookedTables={bookedTables}
+                onSelectTable={setSelectedTable}
+              />
+            </div>
 
             {/* Reservation Information */}
-            <div className="mt-8 rounded-[32px] border border-[#E8D9CC] bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-              <div className="mb-8">
-                <span className="text-sm font-medium uppercase tracking-[0.3em] text-[#D8844B]">
+
+            <div className="mt-8 rounded-[24px] border border-[#E8D9CC] bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] sm:rounded-[28px] sm:p-7 lg:rounded-[32px] lg:p-8">
+
+              <div className="mb-6 sm:mb-8">
+                <span className="text-xs font-medium uppercase tracking-[0.25em] text-[#D8844B] sm:text-sm sm:tracking-[0.3em]">
                   Guest Guidelines
                 </span>
 
-                <h3 className="mt-2 font-heading text-3xl text-[#5B1F08]">
+                <h3 className="mt-2 font-heading text-2xl text-[#5B1F08] sm:text-3xl">
                   Reservation Information
                 </h3>
 
-                <p className="mt-3 text-gray-600 leading-7">
+                <p className="mt-3 text-sm leading-7 text-gray-600 sm:text-base">
                   A few helpful details to ensure your dining experience is
                   smooth and enjoyable.
                 </p>
               </div>
 
               <div className="space-y-4">
+
                 {/* Arrival */}
-                <div className="flex gap-4 rounded-2xl bg-[#FCFAF7] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#5B1F08]/10">
-                    <Clock3 className="h-6 w-6 text-[#5B1F08]" />
+                <div className="flex items-start gap-4 rounded-2xl bg-[#FCFAF7] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:items-center sm:p-5">
+
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#5B1F08]/10 sm:h-12 sm:w-12">
+                    <Clock3 className="h-5 w-5 text-[#5B1F08] sm:h-6 sm:w-6" />
                   </div>
 
                   <div>
@@ -712,12 +814,14 @@ export default function ReservationForm() {
                       after your reservation time.
                     </p>
                   </div>
+
                 </div>
 
                 {/* Confirmation */}
-                <div className="flex gap-4 rounded-2xl bg-[#FCFAF7] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#5B1F08]/10">
-                    <MailCheck className="h-6 w-6 text-[#5B1F08]" />
+                <div className="flex items-start gap-4 rounded-2xl bg-[#FCFAF7] p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:items-center sm:p-5">
+
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#5B1F08]/10 sm:h-12 sm:w-12">
+                    <MailCheck className="h-5 w-5 text-[#5B1F08] sm:h-6 sm:w-6" />
                   </div>
 
                   <div>
@@ -726,11 +830,13 @@ export default function ReservationForm() {
                     </h4>
 
                     <p className="mt-1 text-sm leading-6 text-gray-600">
-                      After submitting your reservation, you&apos;ll receive a
+                      After submitting your reservation, youll receive a
                       confirmation email with your booking details.
                     </p>
                   </div>
+
                 </div>
+
               </div>
             </div>
           </div>
