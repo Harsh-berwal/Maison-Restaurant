@@ -69,28 +69,29 @@ export default function Table({
 
   /* ---------------- Round Chairs ---------------- */
 
-  const renderRoundChairs = () => {
-    const distance = radius + 12;
+ /* ---------------- Round Chairs ---------------- */
 
-    return Array.from({ length: table.seats }).map((_, index) => {
-      const angle = (360 / table.seats) * index;
+const renderRoundChairs = () => {
+  const distance = radius + 12;
 
-      const rad = (angle * Math.PI) / 180;
+  return Array.from({ length: table.seats }).map((_, index) => {
+    const angle = (360 / table.seats) * index;
+    const rad = (angle * Math.PI) / 180;
 
-      const x = Math.cos(rad) * distance;
+    // Round values to avoid hydration mismatch
+    const x = Number((Math.cos(rad) * distance).toFixed(2));
+    const y = Number((Math.sin(rad) * distance).toFixed(2));
 
-      const y = Math.sin(rad) * distance;
-
-      return (
-        <Chair
-          key={index}
-          left={`calc(50% + ${x}px)`}
-          top={`calc(50% + ${y}px)`}
-          rotate={angle}
-        />
-      );
-    });
-  };
+    return (
+      <Chair
+        key={index}
+        left={`calc(50% + ${x}px)`}
+        top={`calc(50% + ${y}px)`}
+        rotate={angle}
+      />
+    );
+  });
+};
 
   /* ---------------- Rectangle Chairs ---------------- */
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 import {
   Calendar,
   Clock,
@@ -26,7 +27,10 @@ const reservationSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
   email: z.string().email("Invalid email"),
-  phone: z.string().min(10, "Invalid phone number"),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^\d{10}$/, "Phone number must be exactly 10 digits"),
   date: z.string().min(1, "Select a date"),
   time: z.string().min(1, "Select a time"),
   guests: z.string().min(1, "Select guests"),
@@ -86,41 +90,50 @@ export default function ReservationForm() {
   );
 
   const onSubmit = async (data: ReservationValues) => {
-    if (!selectedTable) {
-      alert("Please select a table.");
-      return;
-    }
+  if (!selectedTable) {
+    toast.error("Please select a table.");
+    return;
+  }
 
-    try {
-      await createReservation({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        phone: data.phone,
+  const loadingToast = toast.loading("Creating your reservation...");
 
-        date: data.date,
-        time: data.time,
+  try {
+    await createReservation({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
 
-        guests: Number(data.guests),
+      date: data.date,
+      time: data.time,
 
-        occasion: data.occasion || undefined,
-        notes: data.notes || undefined,
+      guests: Number(data.guests),
 
-        tableNumber: selectedTable,
-      });
+      occasion: data.occasion || undefined,
+      notes: data.notes || undefined,
 
-      alert("Reservation Confirmed!");
+      tableNumber: selectedTable,
+    });
 
-      reset();
-      setSelectedTable(null);
-    } catch (err) {
-      alert(
+    toast.dismiss(loadingToast);
+
+    toast.success("Reservation Confirmed! 🎉", {
+      description: `Your table ${selectedTable} has been reserved successfully.`,
+    });
+
+    reset();
+    setSelectedTable(null);
+  } catch (err) {
+    toast.dismiss(loadingToast);
+
+    toast.error("Reservation Failed", {
+      description:
         err instanceof Error
           ? err.message
-          : "Something went wrong."
-      );
-    }
-  };
+          : "Something went wrong.",
+    });
+  }
+};
 
   useGSAP(() => {
     if (!sectionRef.current) return;
@@ -274,7 +287,7 @@ export default function ReservationForm() {
                   type="email"
                   placeholder="john@example.com"
                   {...register("email")}
-                  className="w-full rounded-xl border border-[#D7C5B5] px-4 py-3 outline-none transition focus:border-[#D8844B]"
+                  className="w-full rounded-xl border border-[#D7C5B5] bg-white px-4 py-3 text-[#5B1F08] placeholder:text-[#8A7B6E] outline-none transition focus:border-[#D8844B]"
                 />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-500">
@@ -292,7 +305,7 @@ export default function ReservationForm() {
                   type="tel"
                   placeholder="+91 98765 43210"
                   {...register("phone")}
-                  className="w-full rounded-xl border border-[#D7C5B5] px-4 py-3 outline-none transition focus:border-[#D8844B]"
+                  className="w-full rounded-xl border border-[#D7C5B5] bg-white px-4 py-3 text-[#5B1F08] placeholder:text-[#8A7B6E] outline-none transition focus:border-[#D8844B]"
                 />
                 {errors.phone && (
                   <p className="mt-1 text-sm text-red-500">
@@ -319,22 +332,22 @@ export default function ReservationForm() {
                       type="date"
                       {...register("date")}
                       className="
-                  w-full
-                  rounded-xl
-                  border
-                  border-[#D7C5B5]
-                  bg-[#FCFAF7]
-                  py-3.5
-                  pl-12
-                  pr-4
-                  text-[#5B1F08]
-                  outline-none
-                  transition-all
-                  duration-300
-                  focus:border-[#D8844B]
-                  focus:ring-4
-                  focus:ring-[#D8844B]/10
-                "
+                        w-full
+                        rounded-xl
+                        border
+                        border-[#D7C5B5]
+                        bg-[#FCFAF7]
+                        py-3.5
+                        pl-12
+                        pr-4
+                        text-[#5B1F08]
+                        outline-none
+                        transition-all
+                        duration-300
+                        focus:border-[#D8844B]
+                        focus:ring-4
+                        focus:ring-[#D8844B]/10
+                      "
                     />
                   </div>
 
