@@ -3,6 +3,79 @@ import "./globals.css";
 import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
 import { Toaster } from "sonner";
 
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://maisonrestaurant.com"), // Change to your domain
+
+  title: {
+    default: "Maison | Fine Dining Restaurant",
+    template: "%s | Maison",
+  },
+
+  description:
+    "Experience fine dining at Maison. Reserve tables online, explore our handcrafted menu, and enjoy unforgettable culinary experiences.",
+
+  keywords: [
+    "Maison",
+    "Restaurant",
+    "Fine Dining",
+    "Restaurant Reservation",
+    "Luxury Restaurant",
+    "Food",
+    "Dinner",
+    "Lunch",
+  ],
+
+  authors: [
+    {
+      name: "Harsh Berwal",
+    },
+  ],
+
+  creator: "Harsh Berwal",
+
+  publisher: "Maison",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  openGraph: {
+    title: "Maison | Fine Dining Restaurant",
+    description:
+      "Reserve your table at Maison and experience premium dining.",
+    url: "https://maisonrestaurant.com",
+    siteName: "Maison",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Maison Restaurant",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Maison | Fine Dining Restaurant",
+    description:
+      "Reserve your table at Maison and enjoy a premium dining experience.",
+    images: ["/og-image.jpg"],
+  },
+};
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
