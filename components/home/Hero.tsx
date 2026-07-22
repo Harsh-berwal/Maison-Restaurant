@@ -9,6 +9,7 @@ export default function Hero() {
     const reserveBtn = useRef<HTMLButtonElement>(null);
     const menuBtn = useRef<HTMLButtonElement>(null);
 
+    
     useEffect(() => {
         const buttons = [reserveBtn.current, menuBtn.current];
 
@@ -58,9 +59,11 @@ export default function Hero() {
                 src="/images/home/hero-bg.png"
                 alt="Restaurant Interior"
                 fill
+                priority
+                fetchPriority="high"
                 sizes="100vw"
                 className="object-cover object-center"
-            />
+                />
 
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/55" />

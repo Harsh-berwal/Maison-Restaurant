@@ -58,6 +58,8 @@ export default function GalleryHero() {
         src="/images/gallery/gallery-banner.png"
         alt="Restaurant Interior"
         fill
+        priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover object-center"
       />

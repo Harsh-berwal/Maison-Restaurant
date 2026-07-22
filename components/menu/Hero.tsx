@@ -58,6 +58,8 @@ export default function MenuHero() {
         src="/images/menu/menu-banner.png"
         alt="Restaurant Interior"
         fill
+        priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover object-center"
       />
