@@ -188,7 +188,7 @@ export default function ReservationForm() {
           </p>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+        <div className="reservation-input grid gap-10 lg:grid-cols-[1fr_1.15fr]">
           {/* Left Side */}
           <div ref={formRef} className="rounded-3xl bg-white p-8 shadow-xl">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

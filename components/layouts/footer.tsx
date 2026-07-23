@@ -18,46 +18,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
     const [email, setEmail] = useState("");
-const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-const subscribe = useMutation(api.newsletter.subscribe);
+    const subscribe = useMutation(api.newsletter.subscribe);
 
-const handleSubscribe = async () => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const handleSubscribe = async () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!email.trim()) {
-    toast.error("Please enter your email.");
-    return;
-  }
+        if (!email.trim()) {
+            toast.error("Please enter your email.");
+            return;
+        }
 
-  if (!emailRegex.test(email)) {
-    toast.error("Please enter a valid email.");
-    return;
-  }
+        if (!emailRegex.test(email)) {
+            toast.error("Please enter a valid email.");
+            return;
+        }
 
-  setLoading(true);
+        setLoading(true);
 
-  try {
-    const result = await subscribe({
-      email: email.trim().toLowerCase(),
-    });
+        try {
+            const result = await subscribe({
+                email: email.trim().toLowerCase(),
+            });
 
-    if (result.success) {
-      toast.success(result.message);
-      setEmail("");
-    } else {
-      toast.info(result.message);
-    }
-  } catch (error) {
-    console.error(error);
+            if (result.success) {
+                toast.success(result.message);
+                setEmail("");
+            } else {
+                toast.info(result.message);
+            }
+        } catch (error) {
+            console.error(error);
 
-    toast.error("Something went wrong.", {
-      description: "Please try again later.",
-    });
-  } finally {
-    setLoading(false);
-  }
-};
+            toast.error("Something went wrong.", {
+                description: "Please try again later.",
+            });
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const footerRef = useRef<HTMLElement>(null);
     const columns = useRef<HTMLDivElement[]>([]);
@@ -276,49 +276,67 @@ const handleSubscribe = async () => {
 
                     {/* Newsletter */}
 
-                    <div
-                        ref={(el) => {
-                            if (el) columns.current[3] = el;
-                        }}
-                    >
-                        <h4 className="uppercase tracking-[0.25em] text-sm text-[#8e6858] mb-8">
-                            Newsletter
-                        </h4>
+                   <div
+  ref={(el) => {
+    if (el) columns.current[3] = el;
+  }}
+>
+  <h4 className="mb-8 text-sm uppercase tracking-[0.25em] text-[#8e6858]">
+    Newsletter
+  </h4>
 
-                        <p className="leading-8 text-[#b99482] mb-8">
-                            Seasonal menus, exclusive offers, and private events —
-                            delivered straight to your inbox.
-                        </p>
+  <p className="mb-8 leading-8 text-[#b99482]">
+    Seasonal menus, exclusive offers, and private events —
+    delivered straight to your inbox.
+  </p>
 
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                    handleSubscribe();
-                                }
-                            }}
-                            placeholder="your@email.com"
-                            className="w-full h-14 rounded-full border border-[#4e3026] bg-transparent px-6 text-white placeholder:text-[#8e6858] outline-none transition-all duration-300 focus:border-[#d37b44] focus:shadow-[0_0_20px_rgba(211,123,68,0.3)]"
-                        />
+  <input
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleSubscribe();
+      }
+    }}
+    placeholder="your@email.com"
+    autoComplete="email"
+    className="
+      w-full
+      h-14
+      rounded-full
+      border
+      border-[#4e3026]
+      bg-transparent
+      px-6
+      text-white
+      caret-[#d37b44]
+      placeholder:text-[#8e6858]
+      outline-none
+      transition-all
+      duration-300
+      focus:border-[#d37b44]
+      focus:shadow-[0_0_20px_rgba(211,123,68,0.3)]
+      autofill:bg-transparent
+    "
+  />
 
-                        <button
-                            ref={subscribeBtn}
-                            onClick={handleSubscribe}
-                            disabled={loading}
-                            className="subscribe-btn relative mt-5 w-full h-14 overflow-hidden rounded-full bg-[#d37b44] text-white font-semibold disabled:cursor-not-allowed disabled:opacity-70"
-                        >
-                            <span className="relative z-10">
-                                {loading ? "Subscribing..." : "Subscribe"}
-                            </span>
+  <button
+    ref={subscribeBtn}
+    onClick={handleSubscribe}
+    disabled={loading}
+    className="subscribe-btn relative mt-5 h-14 w-full overflow-hidden rounded-full bg-[#d37b44] font-semibold text-white transition-all duration-300 hover:bg-[#e08a55] disabled:cursor-not-allowed disabled:opacity-70"
+  >
+    <span className="relative z-10">
+      {loading ? "Subscribing..." : "Subscribe"}
+    </span>
 
-                            <span
-                                ref={shine}
-                                className="absolute left-[-150%] top-0 h-full w-1/2 rotate-12 bg-white/20 blur-md"
-                            />
-                        </button>
-                    </div>
+    <span
+      ref={shine}
+      className="absolute left-[-150%] top-0 h-full w-1/2 rotate-12 bg-white/20 blur-md"
+    />
+  </button>
+</div>
                 </div>
 
                 <div className="footer-bottom mt-20 pt-8 border-t border-[#47251b] flex flex-col md:flex-row justify-between items-center text-sm text-[#8d6d61]">

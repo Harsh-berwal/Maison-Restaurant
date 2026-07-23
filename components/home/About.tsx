@@ -186,9 +186,13 @@ export default function About() {
           ref={chefCardRef}
           className="mx-auto mt-10 flex w-full max-w-md items-center gap-4 rounded-[28px] bg-[#4B403A] p-5 shadow-xl lg:mx-0"
         >
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#D8844B] text-xl font-bold text-white">
-            JB
-          </div>
+         <Image
+            src="/images/home/chief.png"
+            alt="John Brown"
+            width={64}
+            height={64}
+            className="h-16 w-16 shrink-0 rounded-full object-cover"
+          />
 
           <div className="text-left">
             <h4 className="text-lg font-semibold text-white">

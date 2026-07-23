@@ -69,8 +69,6 @@ export default function Table({
 
   /* ---------------- Round Chairs ---------------- */
 
- /* ---------------- Round Chairs ---------------- */
-
 const renderRoundChairs = () => {
   const distance = radius + 12;
 
@@ -97,7 +95,7 @@ const renderRoundChairs = () => {
 
   const renderRectangleChairs = () => (
     <>
-      {/* Top */}
+      {/* Top */} 
       <Chair left="28%" top="-10px" />
       <Chair left="72%" top="-10px" />
 

@@ -176,7 +176,7 @@ export default function ContactSection() {
         </div>
 
         {/* Right Side */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 ">
           {/* First Name + Last Name */}
 
           <div className="grid gap-8 md:grid-cols-2">
