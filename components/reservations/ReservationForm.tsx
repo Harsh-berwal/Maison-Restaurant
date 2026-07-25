@@ -196,10 +196,16 @@ export default function ReservationForm() {
           </p>
         </div>
 
-        <div className="reservation-input grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+        <div className="reservation-input grid items-start gap-10 lg:grid-cols-[1fr_1.15fr]">
           {/* Left Side */}
-          <div ref={formRef} className="rounded-3xl bg-white p-8 shadow-xl">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <div
+          ref={formRef}
+          className="rounded-3xl bg-white p-8 shadow-xl"
+        >
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6"
+            >
               {/* First Name + Last Name */}
               <div className="grid gap-6 md:grid-cols-2">
                 {/* First Name */}
@@ -631,6 +637,7 @@ export default function ReservationForm() {
                 className="
                     group
                     relative
+                    mt-auto
                     w-full
                     overflow-hidden
                     rounded-xl
@@ -646,8 +653,8 @@ export default function ReservationForm() {
                     hover:bg-[#6B2910]
                     hover:shadow-[0_12px_30px_rgba(91,31,8,0.25)]
                     active:translate-y-0
-                "
-              >
+                    "
+                  >
                 {/* Shine Effect */}
                 <span
                   className="
@@ -689,7 +696,7 @@ export default function ReservationForm() {
           {/* Right Side */}
           <div
             ref={planRef}
-            className="w-full overflow-hidden"
+            className="flex h-full flex-col w-full overflow-hidden"
           >
             {/* Floor Plan for Mobile */}
             <div className="mb-6 rounded-3xl border border-[#E8D9CC] bg-white p-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] xl:hidden">

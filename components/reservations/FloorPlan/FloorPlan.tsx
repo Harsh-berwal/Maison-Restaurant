@@ -19,7 +19,7 @@ export default function FloorPlan({
   onSelectTable,
 }: FloorPlanProps) {
   return (
-    <div className="relative overflow-hidden rounded-[42px] border border-[#3B2418] bg-[#1A110C] p-8 shadow-[0_45px_120px_rgba(0,0,0,.45)]">
+    <div className="relative overflow-hidden rounded-[42px] border border-[#3B2418] bg-[#1A110C] p-8 shadow-xl">
 
       {/* Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,200,120,.12),transparent_60%)]" />
