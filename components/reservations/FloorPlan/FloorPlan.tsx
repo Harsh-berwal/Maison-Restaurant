@@ -105,7 +105,7 @@ export default function FloorPlan({
 
         <div className="relative h-[760px] w-full">
 
-                      {/* Premium Carpet */}
+          {/* Premium Carpet */}
           <div
             className="
               absolute
@@ -158,16 +158,15 @@ export default function FloorPlan({
           ))}
 
           {/* Corner Lights */}
-          <div className="absolute left-20 top-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
+          <div className="pointer-events-none absolute left-20 top-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
 
-          <div className="absolute right-24 top-32 h-32 w-32 rounded-full bg-[#F2B47B]/5 blur-3xl" />
+          <div className="pointer-events-none absolute right-24 top-32 h-32 w-32 rounded-full bg-[#F2B47B]/5 blur-3xl" />
 
-          <div className="absolute bottom-28 left-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-28 left-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
 
-          <div className="absolute bottom-28 right-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-28 right-28 h-28 w-28 rounded-full bg-[#F2B47B]/5 blur-3xl" />
 
-          {/* Center Light */}
-          <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2B47B]/10 blur-[90px]" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2B47B]/10 blur-[90px]" />
 
         </div>
       </div>

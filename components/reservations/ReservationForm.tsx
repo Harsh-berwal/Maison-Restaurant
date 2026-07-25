@@ -136,30 +136,38 @@ export default function ReservationForm() {
 };
 
   useGSAP(() => {
-    if (!sectionRef.current) return;
+  const section = sectionRef.current;
+  const form = formRef.current;
+  const plan = planRef.current;
 
-    gsap.from(formRef.current, {
+  if (!section) return;
+
+  if (form) {
+    gsap.from(form, {
       x: -80,
       opacity: 0,
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         start: "top 75%",
       },
     });
+  }
 
-    gsap.from(planRef.current, {
+  if (plan) {
+    gsap.from(plan, {
       x: 80,
       opacity: 0,
       duration: 1,
       ease: "power3.out",
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: section,
         start: "top 75%",
       },
     });
-  }, []);
+  }
+}, { scope: sectionRef });
 
   return (
     <section

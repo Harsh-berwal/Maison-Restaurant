@@ -233,10 +233,8 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* 
-              Reserve Button
-           */}
-
+          {/* Reserve Button */}
+          
           <Link href="/reservations">
             <button
               ref={reserveBtn}
@@ -257,7 +255,6 @@ export default function Navbar() {
       </header>
            
            {/* Mobile Overlay */}
-
       <div
         onClick={() => setMenuOpen(false)}
         className={`fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-all duration-300 lg:hidden ${

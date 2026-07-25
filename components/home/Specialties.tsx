@@ -234,6 +234,9 @@ export default function Specialties() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  sizes="(max-width: 767px) 100vw,
+                        (max-width: 1279px) 50vw,
+                        33vw"
                   className="object-cover"
                 />
               </div>

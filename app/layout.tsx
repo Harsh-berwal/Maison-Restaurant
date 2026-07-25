@@ -1,10 +1,10 @@
-import { Inter, Sora } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/providers/ConvexClientProvider";
 import { Toaster } from "sonner";
 
 import type { Metadata } from "next";
-import "./globals.css";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://maisonrestaurant.com"), // Change to your domain
@@ -81,9 +81,10 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const sora = Sora({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
 });
 
 export default function RootLayout({
@@ -93,28 +94,28 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${sora.variable} h-full antialiased`}
-    >
-      <body>
-        <ConvexClientProvider>
-          {children}
-          <Toaster
-            position="bottom-right"
-            theme="dark"
-            richColors
-            expand
-            toastOptions={{
-              classNames: {
-                toast:
-                  "!rounded-3xl !bg-[#d37b44] !border !border-[#a65a2e] !text-white shadow-2xl px-5 py-4",
-                title: "font-semibold",
-                description: "text-white/80",
-              },
-            }}
-          />
-        </ConvexClientProvider>
-      </body>
-    </html>
+  lang="en"
+  className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+>
+  <body>
+    <ConvexClientProvider>
+      {children}
+      <Toaster
+        position="bottom-right"
+        theme="dark"
+        richColors
+        expand
+        toastOptions={{
+          classNames: {
+            toast:
+              "!rounded-3xl !bg-[#d37b44] !border !border-[#a65a2e] !text-white shadow-2xl px-5 py-4",
+            title: "font-semibold",
+            description: "text-white/80",
+          },
+        }}
+      />
+    </ConvexClientProvider>
+  </body>
+</html>
   );
 }

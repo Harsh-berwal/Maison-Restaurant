@@ -25,167 +25,138 @@ export default function ReservationHero() {
   const btnRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (!heroRef.current) return;
+useGSAP(() => {
+  if (!heroRef.current) return;
 
-    const ctx = gsap.context(() => {
-      const heroLines = gsap.utils.toArray<HTMLElement>(".hero-line");
+  const heroLines = gsap.utils.toArray<HTMLElement>(".hero-line");
 
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "expo.out",
-        },
-      });
+  const tl = gsap.timeline({
+    defaults: {
+      ease: "expo.out",
+    },
+  });
 
-      // Background Reveal
-      tl.fromTo(
-        bgRef.current,
-        {
-          scale: 1.08,
-        },
-        {
-          scale: 1,
-          duration: 1.2,
-        }
-      );
+  if (bgRef.current) {
+    tl.fromTo(bgRef.current, { scale: 1.08 }, { scale: 1, duration: 1.2 });
+  }
 
-      // Overlay
-      tl.from(
-        overlayRef.current,
-        {
-          opacity: 0,
-          duration: 0.8,
-        },
-        "<"
-      );
+  if (overlayRef.current) {
+    tl.from(overlayRef.current, { opacity: 0, duration: 0.8 }, "<");
+  }
 
-      // Small Heading
-      tl.from(
-        tagRef.current,
-        {
-          y: 25,
-          opacity: 0,
-          duration: 0.45,
-        },
-        "-=0.6"
-      );
+  if (tagRef.current) {
+    tl.from(tagRef.current, {
+      y: 25,
+      opacity: 0,
+      duration: 0.45,
+    }, "-=0.6");
+  }
 
-      // Main Heading
-      tl.from(
-        heroLines,
-        {
-          yPercent: 100,
-          opacity: 0,
-          stagger: 0.1,
-          duration: 0.75,
-        },
-        "-=0.2"
-      );
+  if (heroLines.length) {
+    tl.from(heroLines, {
+      yPercent: 100,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.75,
+    }, "-=0.2");
+  }
 
-      // Divider
-      tl.from(
-        dividerRef.current,
-        {
-          scaleX: 0,
-          transformOrigin: "center",
-          duration: 0.45,
-        },
-        "-=0.3"
-      );
+  if (dividerRef.current) {
+    tl.from(dividerRef.current, {
+      scaleX: 0,
+      transformOrigin: "center",
+      duration: 0.45,
+    }, "-=0.3");
+  }
 
-      // Paragraph
-      tl.from(
-        textRef.current,
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.45,
-        },
-        "-=0.25"
-      );
+  if (textRef.current) {
+    tl.from(textRef.current, {
+      y: 20,
+      opacity: 0,
+      duration: 0.45,
+    }, "-=0.25");
+  }
 
-      // Button
-      tl.from(
-        btnRef.current,
-        {
-          y: 15,
-          opacity: 0,
-          scale: 0.96,
-          duration: 0.45,
-        },
-        "-=0.25"
-      );
+  if (btnRef.current) {
+    tl.from(btnRef.current, {
+      y: 15,
+      opacity: 0,
+      scale: 0.96,
+      duration: 0.45,
+    }, "-=0.25");
+  }
 
-      // Scroll Indicator
-      tl.from(
-        scrollRef.current,
-        {
-          y: 15,
-          opacity: 0,
-          duration: 0.35,
-        },
-        "-=0.25"
-      );
+  if (scrollRef.current) {
+    tl.from(scrollRef.current, {
+      y: 15,
+      opacity: 0,
+      duration: 0.35,
+    }, "-=0.25");
+  }
 
-      // Floating Glow
-      gsap.to(glowRef.current, {
-        x: 25,
-        y: -25,
-        duration: 5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+  if (glowRef.current) {
+    gsap.to(glowRef.current, {
+      x: 25,
+      y: -25,
+      duration: 5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }
 
-      // Background Floating Zoom
-      gsap.to(bgRef.current, {
-        scale: 1.03,
-        duration: 6,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+  if (bgRef.current) {
+    gsap.to(bgRef.current, {
+      scale: 1.03,
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      // Scroll Indicator Bounce
-      gsap.to(".scroll-dot", {
-        y: 8,
-        duration: 0.7,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-      });
+    gsap.to(bgRef.current, {
+      yPercent: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+  }
 
-      // Background Parallax
-      gsap.to(bgRef.current, {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+  const scrollDot = heroRef.current.querySelector(".scroll-dot");
 
-      // Mouse Parallax
-      const handleMouseMove = (e: MouseEvent) => {
-        gsap.to(glowRef.current, {
-          x: (e.clientX - window.innerWidth / 2) * 0.03,
-          y: (e.clientY - window.innerHeight / 2) * 0.03,
-          duration: 1,
-          overwrite: "auto",
-        });
-      };
+  if (scrollDot) {
+    gsap.to(scrollDot, {
+      y: 8,
+      duration: 0.7,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+  }
 
-      window.addEventListener("mousemove", handleMouseMove);
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!glowRef.current) return;
 
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-      };
-    }, heroRef);
+    gsap.to(glowRef.current, {
+      x: (e.clientX - window.innerWidth / 2) * 0.03,
+      y: (e.clientY - window.innerHeight / 2) * 0.03,
+      duration: 1,
+      overwrite: "auto",
+    });
+  };
 
-    return () => ctx.revert();
-  }, []);
+  window.addEventListener("mousemove", handleMouseMove);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, {
+  scope: heroRef,
+});
 
   return (
     <section

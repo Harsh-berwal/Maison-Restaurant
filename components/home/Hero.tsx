@@ -85,7 +85,7 @@ export default function Hero() {
 
                 {/* Heading */}
                 <h1 className="font-serif font-semibold leading-[0.9] text-white">
-                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+                    <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl [font-family:var(--font-playfair)]">
                         Dine With Us
                     </span>
 
