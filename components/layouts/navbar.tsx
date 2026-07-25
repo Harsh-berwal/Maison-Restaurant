@@ -238,7 +238,7 @@ export default function Navbar() {
           <Link href="/reservations">
             <button
               ref={reserveBtn}
-              className="relative overflow-hidden rounded-xl bg-[#D55A13] px-5 py-2 text-sm font-semibold tracking-wide text-white transition-all md:px-6 md:py-3 md:text-base lg:px-8"
+              className="relative overflow-hidden rounded-xl bg-[#D55A13] px-5 py-2 text-sm font-semibold tracking-wide text-white transition-all md:px-6 md:py-3 md:text-base lg:px-8 cursor-pointer"
             >
               <span className="relative z-10">
                 Reserve
