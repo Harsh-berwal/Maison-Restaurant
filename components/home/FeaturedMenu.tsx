@@ -26,7 +26,7 @@ export default function FeaturedDishes() {
     {
       title: "Prime Wagyu",
       badge: "Chef's Selection",
-      image: "/images/home/featuredDish/dish-1.png",
+      image: "/images/home/featuredDish/Dish-1.png",
       price: "$185",
       description:
         "A5 Japanese Wagyu served with roasted potatoes, seasonal vegetables and black truffle sauce.",
@@ -36,7 +36,7 @@ export default function FeaturedDishes() {
     {
       title: "Atlantic Salmon",
       badge: "Signature Dish",
-      image: "/images/home/featuredDish/dish-2.png",
+      image: "/images/home/featuredDish/Dish-2.png",
       price: "$145",
       description:
         "Fresh Atlantic salmon with herb butter, asparagus and citrus cream reduction.",
@@ -46,7 +46,7 @@ export default function FeaturedDishes() {
     {
       title: "Braised Lamb",
       badge: "Guest Favorite",
-      image: "/images/home/featuredDish/dish-3.png",
+      image: "/images/home/featuredDish/Dish-3.png",
       price: "$165",
       description:
         "Slow-cooked lamb shoulder finished with red wine jus, creamy mashed potatoes and seasonal vegetables.",

@@ -59,13 +59,13 @@ const gallery = [
   },
   {
     id: 9,
-    src: "/images/home/featuredDish/dish-1.png",
+    src: "/images/home/featuredDish/Dish-1.png",
     className: "row-span-2",
     dec: "Prime Wagyu",
   },
   {
     id: 10,
-    src: "/images/home/featuredDish/dish-2.png",
+    src: "/images/home/featuredDish/Dish-2.png",
     className: "row-span-1",
     dec: "Atlantic Salmon",
   }
