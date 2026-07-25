@@ -837,9 +837,8 @@ export default function ReservationForm() {
                     </h4>
 
                     <p className="mt-1 text-sm leading-6 text-gray-600">
-                      Your table will be held for
-                      <strong> 15 minutes </strong>
-                      after your reservation time.
+                      Please arrive within <strong>30 minutes</strong> of your reservation time.
+                      Reservations not honored within this period will be automatically canceled.
                     </p>
                   </div>
 
