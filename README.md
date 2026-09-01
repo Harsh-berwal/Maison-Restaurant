@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍽️ Maison – Restaurant Website
 
-## Getting Started
+A modern restaurant web application built with **Next.js, TypeScript, and Convex**, designed to provide an elegant and interactive digital dining experience.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌐 Live Project
+
+🚀 **[Visit the Live Website →](https://restaurant-website-ruby-six.vercel.app)**
+
+---
+
+## 📌 About The Project
+
+Maison is a modern restaurant website designed with a premium and minimal aesthetic.
+
+The application provides visitors with an elegant way to explore the restaurant, discover its offerings, learn more about Maison, and interact with different sections of the website.
+
+The project combines a modern **Next.js frontend** with a **Convex backend** for application data and functionality.
+
+---
+
+## ✨ Features
+
+- 🍽️ Modern restaurant interface
+- 📖 Menu and restaurant information
+- 🏠 Restaurant showcase
+- 📱 Responsive design
+- 🎨 Premium and minimal UI
+- 📩 Contact functionality
+- 👤 User authentication
+- 🔐 Login functionality
+- ⚡ Convex backend integration
+- 🧩 Reusable React components
+- ⚠️ Error handling
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Backend
+
+- Convex
+
+### UI
+
+- Reusable React Components
+- Modern responsive design
+
+### Deployment & Tools
+
+- Vercel
+- Git
+- GitHub
+- npm
+
+---
+
+## 🏗️ Application Architecture
+
+```text
+                         User
+                          │
+                          ▼
+                    Next.js App
+                          │
+             ┌────────────┼────────────┐
+             │            │            │
+             ▼            ▼            ▼
+           Pages      Components    Providers
+             │            │
+             └────────────┼────────────┘
+                          ▼
+                        Convex
+                          │
+                          ▼
+                       Backend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+Maison-Restaurant/
+├── app/             # Next.js pages and routes
+├── components/      # Reusable UI components
+├── convex/          # Convex backend
+├── lib/             # Utility functions
+├── providers/       # Application providers
+├── public/          # Static assets
+├── next.config.ts   # Next.js configuration
+├── package.json     # Dependencies and scripts
+└── tsconfig.json    # TypeScript configuration
