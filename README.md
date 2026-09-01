@@ -20,6 +20,12 @@ The project combines a modern **Next.js frontend** with a **Convex backend** for
 
 ---
 
+## 📸 Screenshots
+
+### 🍽️ Maison Restaurant
+
+![Maison Restaurant](maison.png)
+
 ## ✨ Features
 
 - 🍽️ Modern restaurant interface
